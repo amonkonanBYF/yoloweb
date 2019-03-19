@@ -15,21 +15,12 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         $em = $this->container->get('doctrine')->getManager();
-
         $velos = $em->getRepository(Velib::class)->findAll();
-
-        return $this->render('default/index.html.twig', compact('velos'));
+        $paginator  = $this->container->get('knp_paginator');
+        $pagination = $paginator->paginate($velos,
+            $request->query->getInt('page', 1),
+            20);
+        return $this->render('default/index.html.twig', array('pagination' => $pagination) /*compact('velos', 'pagination')*/);
     }
-
-    /**
-     * @Route("/api", name="api")
-     */
-    public function listAction()
-    {
-
-    }
-
-
 }

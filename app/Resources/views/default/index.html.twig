@@ -33,23 +33,25 @@
             {% endfor %}
         {% endfor %}
     {% endif %}
-
-    {% for velo in velos %}
+    <div class="count">
+        <label><strong>Nombre total de velos : </strong></label>{{ pagination.getTotalItemCount }}
+    </div>
+    <hr>
+    {% for velo in pagination %}
         <table>
-            <tr>
+            <tr {% if loop.index is odd %}class="color"{% endif %} >
                 <td>
                     <label><strong>col1 : </strong></label>{{ velo.col1 }}
                     <label><strong>col2 : </strong></label>{{ velo.col2 }}
                     <label><strong>col3 : </strong></label>{{ velo.col3 }} 
                 </td>
             </tr>
-
         </table>
     {% endfor %}
-
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
 {% endblock %}
-
-
 
 {% block stylesheets %}
 

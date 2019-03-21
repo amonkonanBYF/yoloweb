@@ -21,6 +21,6 @@ class DefaultController extends Controller
         $pagination = $paginator->paginate($velos,
             $request->query->getInt('page', 1),
             20);
-        return $this->render('default/index.html.twig', array('pagination' => $pagination) /*compact('velos', 'pagination')*/);
+        return $this->render('default/index.html.twig', array('pagination' => $pagination));
     }
 }

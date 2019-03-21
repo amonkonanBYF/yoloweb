@@ -31,6 +31,9 @@ framework:
     php_errors:
         log: true
 
+    serializer:
+        enabled: true
+
 # Twig Configuration
 twig:
     debug: '%kernel.debug%'
@@ -94,3 +97,10 @@ knp_paginator:
         sortable: '@KnpPaginator/Pagination/sortable_link.html.twig' # sort link template
         filtration: '@KnpPaginator/Pagination/filtration.html.twig'  # filters template
 
+fos_rest:
+    body_converter:
+        enabled: true
+    view:
+        formats: { json: true, xml: false, rss: false }
+    serializer:
+        serialize_null: true
